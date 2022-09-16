@@ -61,14 +61,25 @@ setTimer,休眠检查,100
 return
 
 休眠检查:
-msgbox,,取消休眠,请按确定键解除休眠,30
+窗口标题:="取消休眠"
+窗口置顶(窗口标题,3000)
+msgbox,,%窗口标题%,请按确定键解除休眠,30
 IfMsgBox,OK
 {
 	setTimer,休眠检查,off
 	tooltip,休眠解除
 	sleep,2000
-	tooltip
 }	
 ifMsgBox,timeOut
 	DllCall("PowrProf\SetSuspendState", "int", 0, "int", 0, "int", 0)
+return
+
+窗口置顶(窗口标题,延时:=0){
+	延时:=0-延时
+	setTimer,窗口置顶,%延时%
+	return
+}
+
+窗口置顶:
+	winset,alwaysOnTop,on,%窗口标题%
 return
