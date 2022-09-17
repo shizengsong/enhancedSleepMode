@@ -69,6 +69,7 @@ IfMsgBox,OK
 	setTimer,休眠检查,off
 	tooltip,休眠解除
 	sleep,2000
+	tooltip
 }	
 ifMsgBox,timeOut
 	DllCall("PowrProf\SetSuspendState", "int", 0, "int", 0, "int", 0)
